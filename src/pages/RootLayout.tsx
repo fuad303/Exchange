@@ -3,18 +3,19 @@ import { motion } from "framer-motion";
 import image1 from "../assets/images/img1.png";
 import { Play } from "lucide-react";
 import { useState } from "react";
+import SideBar from "../components/mainLayout/SideBar";
 
 const RootLayout = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
     <div>
-      <header className="flex justify-between p-10 bg-gradient-to-r from-gray-600 to-gray-800">
+      <header className="flex justify-between p-10 bg-white ">
         {/* The left side of the header */}
         <div className="relative">
           <motion.div
             onClick={() => setToggle((prev) => !prev)}
-            className="bg-white p-2 rounded-md flex items-center cursor-pointer select-none"
+            className="bg-gray-900/5 p-2 rounded-md flex items-center cursor-pointer select-none"
             animate={{ x: [-100, 0], opacity: [0, 1] }}
             transition={{ duration: 0.5 }}
           >
@@ -25,7 +26,7 @@ const RootLayout = () => {
           </motion.div>
 
           <motion.div
-            className={`absolute left-0 top-full mt-2 bg-white rounded-md shadow-lg p-3 transition-all duration-300 ${
+            className={`absolute left-0 top-full mt-2 bg-gray-800/10 rounded-md shadow-lg p-3 transition-all duration-300 ${
               toggle ? "opacity-100 visible" : "opacity-0 invisible"
             }`}
             initial={{ opacity: 0, y: -10 }}
@@ -40,7 +41,7 @@ const RootLayout = () => {
 
         {/* The center of the header */}
         <motion.div
-          className="font-bold text-xl font-sans text-white"
+          className="font-bold text-xl font-sans "
           animate={{ opacity: [0, 1] }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
@@ -62,7 +63,7 @@ const RootLayout = () => {
             <img src={image1} alt="Logo" />
           </motion.div>
           <motion.div
-            className="bg-white p-1 w-16 rounded-md text-right"
+            className="bg-gray-900/5 p-1 w-16 rounded-md text-right"
             animate={{ scale: [0, 1] }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
@@ -72,6 +73,9 @@ const RootLayout = () => {
         </motion.div>
         {/* End of right side */}
       </header>
+      <div>
+        <SideBar />
+      </div>
       <main>
         <Outlet />
       </main>
